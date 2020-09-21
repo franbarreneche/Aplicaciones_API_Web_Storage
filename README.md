@@ -2,7 +2,7 @@
 
 Acá tengo que poner datos relevantes sobre esto
 
-´´´javascipt
+```javascript
 function() {
     alert("hola");
 }
