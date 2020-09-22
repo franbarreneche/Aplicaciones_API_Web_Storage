@@ -16,11 +16,6 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item brand-text" href="index.html">CellWORLD </a>
-                <div class="navbar-burger burger" data-target="navMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-start">
@@ -61,9 +56,25 @@
                         </div>
                     </div>
                 </section>
+                <section class="info-tiles">
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p id="totalAtendidos" class="title has-text-primary"></p>
+                                <p class="subtitle">Atendidos</p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p id="totalPendientes" class="title has-text-danger"></p>
+                                <p class="subtitle">Pendientes</p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
                 <section class="section">
                     <div class="columns">
-                        <div class="column is-6">
+                        <div class="column is-half">
                             <div class="card">
                                 <header class="card-header">
                                     <p class="card-header-title">
@@ -96,8 +107,9 @@
                                 </div>
                             </div>                            
                             <div class="field">
+                                <label class="label">Nombre del Cliente</label>
                                 <p class="control has-icons-left has-icons-right">
-                                    <input id="textNombre" class="input is-medium" type="text" placeholder="Nombre" required>
+                                    <input id="textNombre" class="input is-medium" type="text" placeholder="ej: Pedro Sanchez" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -107,6 +119,7 @@
                                 </p>
                             </div>
                             <div class="field">
+                                <label class="label">Motivo</label>
                                 <div class="control">
                                     <div class="select is-medium">
                                         <select id="selectCodigo">
@@ -122,13 +135,13 @@
                             </div>
                             <div class="field">
                                 <p class="control">
-                                    <button class="button is-success" id="botonAgregarCliente">
+                                    <button class="button is-success is-medium" id="botonAgregarCliente">
                                         Agregar
                                     </button>
                                 </p>
                             </div>
                         </div>
-                        <div class="column is-6">
+                        <div class="column is-half">
                             <div class="card">
                                 <header class="card-header">
                                     <p class="card-header-title">
@@ -142,11 +155,14 @@
                                 </header>
                                 <div class="card-content">
                                     <div class="table-container">
-                                        <table id="sinAtender" class="table is-fullwidth is-striped"> 
+                                        <table class="table is-fullwidth is-striped"> 
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Turno</th>
-                                        </tr>                                       
+                                        </tr>
+                                        <tbody id="sinAtender">
+
+                                        </tbody>                                       
                                         </table>
                                     </div>
                                 </div>
@@ -162,64 +178,9 @@
 
 
     <!-- SCRIPTS MIOS -->
-    <script>
-        const queryString = location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const usuario = urlParams.get("usuario");
-        console.log(usuario);
-        document.getElementById("nombreUsuario").innerHTML = usuario;
+    <script src="js/asignar_turno.js"></script>
 
-        //variable globales de los turnos
-        var turnosRE = 0;
-        var turnosCE = 0;
-        var turnosRR = 0;
-        var turnosAC = 0;
-        var turnosQQ = 0;
 
-        document.getElementById("botonAgregarCliente").addEventListener("click", function(){
-            //obtener y perparar nombre del cliente
-            var tabla = document.getElementById("sinAtender");
-            var nuevo = document.getElementById("textNombre").value;            
-            
-            //obtener y preprar turno
-            var selectValue = document.getElementById("selectCodigo").value;
-            var color = "light";
-            if(selectValue.includes('RE')) {
-                turnosRE++;
-                selectValue = "RE"+turnosRE;
-                color = "primary";
-            } else if(selectValue.includes("CE")) {
-                turnosCE++;
-                selectValue = "CE"+turnosCE;
-                color = "success";
-            } else if(selectValue.includes("RR")) {
-                turnosRR++;
-                selectValue = "RR"+turnosRR;
-                color =  "info";
-            } else if(selectValue.includes("AC")) {
-                turnosAC++;
-                selectValue = "AC"+turnosAC;
-                color = "dark";
-            }else {
-                turnosQQ++;
-                selectValue = "QQ"+turnosQQ;
-                color = "danger";
-            }
-
-            //agregar a la lista html
-            var elemNombre  = document.createElement("td");
-            elemNombre.innerHTML = nuevo;
-            var elemTurno = document.createElement("td");
-            elemTurno.innerHTML =  ' <span class="tag is-'+ color +'">' + selectValue + '<span>';
-            var elemRow = document.createElement("tr");
-            elemRow.appendChild(elemNombre);           
-            elemRow.appendChild(elemTurno);
-            tabla.appendChild(elemRow);
-        });
-    </script>
-
-    <!-- OTROS SCRIPTS -->
-    <script async type="text/javascript" src="js/bulma.js"></script>
 </body>
 
 </html>

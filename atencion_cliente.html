@@ -4,9 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Atención Cliente</title>
+    <title>Asignar Turno</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -15,23 +17,18 @@
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item brand-text" href="index.html">CellWORLD </a>
-                <div class="navbar-burger burger" data-target="navMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="login.html">
-            Login
-          </a>
+                        Login
+                    </a>
                     <a class="navbar-item" href="asignar_turno.html">
-            Asignar Turno
-          </a>
+                        Asignar Turno
+                    </a>
                     <a class="navbar-item" href="atencion_cliente.html">
-            Atención Cliente
-          </a>
+                        Atención Cliente
+                    </a>
                 </div>
 
             </div>
@@ -45,200 +42,255 @@
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a href="#">Turneitor</a></li>
-                        <li class="is-active"><a href="#" aria-current="page">Admin</a></li>
+                        <li class="is-active"><a href="#" aria-current="page">Atención Cliente</a></li>
                     </ul>
                 </nav>
-                <section class="hero is-info welcome is-small">
-                    <div class="hero-body">
-                        <div class="container">
-                            <h1 class="title">
-                                Hello, <span id="nombreUsuario"></span>
-                            </h1>
-                            <h2 class="subtitle">
-                                I hope you are having a great day!
-                            </h2>
-                        </div>
+    </section>
+    <section class="container">
+        <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+                <article class="tile is-child box has-background-dark">
+                    <p id="totalAtendidosPorEmpleado" class="title has-text-light">439k</p>
+                    <p class="subtitle has-text-light">Atendidos</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p id="totalRE" class="title">439k</p>
+                    <p class="subtitle">Reparación</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p id="totalCE" class="title">59k</p>
+                    <p class="subtitle">Compra</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p id="totalRR" class="title">3.4k</p>
+                    <p class="subtitle">Retiro</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p id="totalAC" class="title">19</p>
+                    <p class="subtitle">Atención</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p id="totalQQ" class="title">19</p>
+                    <p class="subtitle">Quejas</p>
+                </article>
+            </div>
+        </div>
+    </section>    
+    <section class="section">
+        <div class="container">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-vertical" id="listaAtendidos"> 
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child"> 
+                        <button id="btnAtenderRE" class="button is-block is-info is-small is-fullwidth">
+                            Atender
+                        </button>                       
                     </div>
-                </section>
-                <section class="info-tiles">
-                    <div class="tile is-ancestor has-text-centered">
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                <p class="title">439k</p>
-                                <p class="subtitle">Users</p>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                <p class="title">59k</p>
-                                <p class="subtitle">Products</p>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                <p class="title">3.4k</p>
-                                <p class="subtitle">Open Orders</p>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                <p class="title">19</p>
-                                <p class="subtitle">Exceptions</p>
-                            </article>
-                        </div>
+                    <div class="tile is-child box" id="listaRE">                        
+                    </div>                    
+                </div>
+                <div class="tile is-parent is-vertical" >
+                    <div class="tile is-child"> 
+                        <button id="btnAtenderCE" class="button is-block is-info is-small is-fullwidth">
+                            Atender
+                        </button>                       
                     </div>
-                </section>
-                <div class="columns">
-                    <div class="column is-6">
-                        <div class="card events-card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Ordenes
-                                </p>
-                                <a href="#" class="card-header-icon" aria-label="more options">
-                                    <span class="icon">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                            </header>
-                            <div class="card-table">
-                                <div class="content">
-                                    <table class="table is-fullwidth is-striped">
-                                        <tbody>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                                <td>Lorum ipsum dolem aire</td>
-                                                <td class="level-right"><a class="button is-small is-primary"
-                                                        href="#">Action</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <footer class="card-footer">
-                                <a href="#" class="card-footer-item">View All</a>
-                            </footer>
-                        </div>
+                    <div class="tile is-child box" id="listaCE">
                     </div>
-                    <div class="column is-6">
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Inventory Search
-                                </p>
-                                <a href="#" class="card-header-icon" aria-label="more options">
-                                    <span class="icon">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                        <span class="icon is-medium is-left">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                        <span class="icon is-medium is-right">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    User Search
-                                </p>
-                                <a href="#" class="card-header-icon" aria-label="more options">
-                                    <span class="icon">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                        <span class="icon is-medium is-left">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                        <span class="icon is-medium is-right">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child"> 
+                        <button id="btnAtenderRR" class="button is-block is-info is-small is-fullwidth">
+                            Atender
+                        </button>                       
+                    </div>
+                    <div class="tile is-child box" id="listaRR">
+                    </div>
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child"> 
+                        <button id="btnAtenderAC" class="button is-block is-info is-small is-fullwidth">
+                            Atender
+                        </button>                       
+                    </div>
+                    <div class="tile is-child box" id="listaAC">
+                    </div>
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child"> 
+                        <button id="btnAtenderQQ" class="button is-block is-info is-small is-fullwidth">
+                            Atender
+                        </button>                       
+                    </div>                    
+                    <div class="tile is-child box" id="listaQQ">
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
     </section>
 
-
-    <!-- SCRIPTS MIOS -->
+    <!-- MIS SCRIPTS -->
     <script>
-        const queryString = location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const usuario = urlParams.get("usuario");
-        console.log(usuario);
-        document.getElementById("nombreUsuario").innerHTML = usuario;
-    </script>
+        var listaRE;
+        var listaCE;
+        var listaRR;
+        var listaAC;
+        var listaQQ;
 
-    <!-- OTROS SCRIPTS -->
-    <script async type="text/javascript" src="js/bulma.js"></script>
+        //funcion recuperar lista de clientesPendientes del localstorage
+        function getListaClientesPendientes() {
+            var guardado = localStorage.getItem("clientesPendientes");
+            var clientesPendientes = JSON.parse(guardado);
+            if (clientesPendientes === null) clientesPendientes = new Array();
+            return clientesPendientes;
+        }
+        //funcion para recuperar el total de empleados atendidos por todos los empleados
+        function getTotalAtendidos() {
+            var guardado = localStorage.getItem("totalAtendidos");
+            if (guardado === null) guardado = 0;
+            return guardado;
+        }
+        //funcion recuperar total de clientes atendidos hasta el momento por el empleado
+        function getTotalAtendidosPorEmpleado() {
+            var totalAtendidos = JSON.parse(sessionStorage.getItem("totalAtendidosPorEmpleado"));
+            if (totalAtendidos === null) {
+                totalAtendidos = new Array();
+                sessionStorage.setItem("totalAtendidosPorEmpleado", JSON.stringify(totalAtendidos));
+            }
+            return totalAtendidos;
+        }
+
+        //funcion para eliminar turnos viejos de la tabla                               
+        function limpiarNodo(node) {
+                var last;
+                while (last = node.lastChild) node.removeChild(last);            
+            };
+
+      
+        //establecer q la funcion de actualizacion se ejecute cada 1 segundo
+        setInterval(actualizar, 1000);
+
+        //establecer listeners para los botones
+        document.getElementById("btnAtenderRE").addEventListener("click", atenderCliente);
+        document.getElementById("btnAtenderCE").addEventListener("click", atenderCliente);
+        document.getElementById("btnAtenderRR").addEventListener("click", atenderCliente);
+        document.getElementById("btnAtenderAC").addEventListener("click", atenderCliente);
+        document.getElementById("btnAtenderQQ").addEventListener("click", atenderCliente);
+
+        function actualizar() {
+            listaRE = new Array();
+            listaCE = new Array();
+            listaRR = new Array();
+            listaAC = new Array();
+            listaQQ = new Array();
+            //actualizar listas logicas
+            var listaPendientes = getListaClientesPendientes();
+            for (var i = 0; i < listaPendientes.length; i++) {
+                if (listaPendientes[i][1] == "RE") {
+                    listaRE.push(listaPendientes[i]);
+                } else if (listaPendientes[i][1] == "CE") {
+                    listaCE.push(listaPendientes[i]);
+                } else if (listaPendientes[i][1] == "RR") {
+                    listaRR.push(listaPendientes[i]);
+                } else if (listaPendientes[i][1] == "AC") {
+                    listaAC.push(listaPendientes[i]);
+                } else {
+                    listaQQ.push(listaPendientes[i]);
+                }
+            }
+
+            //actualizar las listas visuales
+            limpiarNodo(document.getElementById("listaRE"));
+            for (var i = 0; i < listaRE.length; i++) {
+                var doc = document.createElement("p");
+                doc.innerHTML = listaRE[i][0];
+                doc.classList.add("is-family-code");
+                document.getElementById("listaRE").appendChild(doc);
+            }
+            limpiarNodo(document.getElementById("listaCE"));
+            for (var i = 0; i < listaCE.length; i++) {
+                var doc = document.createElement("p");
+                doc.innerHTML = listaCE[i][0];
+                doc.classList.add("is-family-code");
+                document.getElementById("listaCE").appendChild(doc);
+            }
+            limpiarNodo(document.getElementById("listaRR"));
+            for (var i = 0; i < listaRR.length; i++) {
+                var doc = document.createElement("p");
+                doc.innerHTML = listaRR[i][0];
+                doc.classList.add("is-family-code");
+                document.getElementById("listaRR").appendChild(doc);
+            }
+            limpiarNodo(document.getElementById("listaAC"));
+            for (var i = 0; i < listaAC.length; i++) {
+                var doc = document.createElement("p");
+                doc.innerHTML = listaAC[i][0];
+                doc.classList.add("is-family-code");
+                document.getElementById("listaAC").appendChild(doc);
+            }
+            limpiarNodo(document.getElementById("listaQQ"));
+            for (var i = 0; i < listaQQ.length; i++) {
+                var doc = document.createElement("p");
+                doc.innerHTML = listaQQ[i][0];
+                doc.classList.add("is-family-code");
+                document.getElementById("listaQQ").appendChild(doc);
+            }
+            document.getElementById("totalRE").innerHTML = listaRE.length;
+            document.getElementById("totalCE").innerHTML = listaCE.length;
+            document.getElementById("totalRR").innerHTML = listaRR.length;
+            document.getElementById("totalAC").innerHTML = listaAC.length;
+            document.getElementById("totalQQ").innerHTML = listaQQ.length;
+
+            //mostrar total atendidos
+            var listaAtendidos = getTotalAtendidosPorEmpleado();
+            document.getElementById("totalAtendidosPorEmpleado").innerHTML = listaAtendidos.length;
+            limpiarNodo(document.getElementById("listaAtendidos"));            
+            for (var i = 0; i < listaAtendidos.length; i++) {
+                var doc = document.createElement("div");
+                doc.innerHTML = listaAtendidos[i][0];
+                doc.classList.add("tile","is-child","box","has-background-dark","has-text-light");                     
+                document.getElementById("listaAtendidos").appendChild(doc);
+            }
+        }
+
+        function atenderCliente(e) {
+            var cliente;
+            var nombreBoton = e.target.getAttribute('id');
+            if(nombreBoton == "btnAtenderRE") cliente = listaRE.shift();
+            else if(nombreBoton == "btnAtenderCE") cliente = listaCE.shift();
+            else if(nombreBoton == "btnAtenderRR") cliente = listaRR.shift();
+            else if(nombreBoton == "btnAtenderAC") cliente = listaAC.shift();
+            else cliente = listaQQ.shift();
+            if(cliente != null){
+                var clientesPendientes = getListaClientesPendientes();
+                //remove
+                var guardar = clientesPendientes.filter(function(value, index, arr){ return !(value[1] == cliente[1] && value[2] == cliente[2]);});
+                localStorage.setItem("clientesPendientes",JSON.stringify(guardar));                        
+                //actualizamos el total de atendidos por toda la empresa en 1 mas
+                localStorage.setItem("totalAtendidos",parseInt(getTotalAtendidos())+1);
+                //actualizamos el total atendidos por el empleado de esta sesion
+                var clientesAtendidosPorEmpleado = getTotalAtendidosPorEmpleado();
+                clientesAtendidosPorEmpleado.push(cliente);
+                sessionStorage.setItem("totalAtendidosPorEmpleado",JSON.stringify(clientesAtendidosPorEmpleado));
+                console.log("Pendientes: "+guardar);
+                console.log("Cliente: "+cliente);
+                console.log("Atendidos: "+clientesAtendidosPorEmpleado);
+            } else (alert("boludo, queres eliminar de un array vacio"));
+            
+        }
+
+    </script>
 </body>
 
 </html>
