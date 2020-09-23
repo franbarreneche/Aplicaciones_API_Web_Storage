@@ -69,37 +69,32 @@ function actualizar() {
     //actualizar las listas visuales
     limpiarNodo(document.getElementById("listaRE"));
     for (var i = 0; i < listaRE.length; i++) {
-        var doc = document.createElement("tr");
-        doc.innerHTML = listaRE[i][2] + " | "+ listaRE[i][0];
-        doc.classList.add("is-size-7","has-text-weight-light");
+        var doc = crearFilaTablaPendientes(listaRE[i][2],listaRE[i][0]);
+        doc.classList.add("is-size-7");
         document.getElementById("listaRE").appendChild(doc);
     }
     limpiarNodo(document.getElementById("listaCE"));
     for (var i = 0; i < listaCE.length; i++) {
-        var doc = document.createElement("p");
-        doc.innerHTML = listaCE[i][0];
-        doc.classList.add("is-family-code");
+        var doc = crearFilaTablaPendientes(listaCE[i][2],listaCE[i][0]);
+        doc.classList.add("is-size-7");
         document.getElementById("listaCE").appendChild(doc);
     }
     limpiarNodo(document.getElementById("listaRR"));
     for (var i = 0; i < listaRR.length; i++) {
-        var doc = document.createElement("p");
-        doc.innerHTML = listaRR[i][0];
-        doc.classList.add("is-family-code");
+        var doc = crearFilaTablaPendientes(listaRR[i][2],listaRR[i][0]);
+        doc.classList.add("is-size-7");
         document.getElementById("listaRR").appendChild(doc);
     }
     limpiarNodo(document.getElementById("listaAC"));
     for (var i = 0; i < listaAC.length; i++) {
-        var doc = document.createElement("p");
-        doc.innerHTML = listaAC[i][0];
-        doc.classList.add("is-family-code");
+        var doc = crearFilaTablaPendientes(listaAC[i][2],listaAC[i][0]);
+        doc.classList.add("is-size-7");
         document.getElementById("listaAC").appendChild(doc);
     }
     limpiarNodo(document.getElementById("listaQQ"));
     for (var i = 0; i < listaQQ.length; i++) {
-        var doc = document.createElement("p");
-        doc.innerHTML = listaQQ[i][0];
-        doc.classList.add("is-family-code");
+        var doc = crearFilaTablaPendientes(listaQQ[i][2],listaQQ[i][0]);
+        doc.classList.add("is-size-7");
         document.getElementById("listaQQ").appendChild(doc);
     }
     document.getElementById("totalRE").innerHTML = listaRE.length;
@@ -113,8 +108,7 @@ function actualizar() {
     document.getElementById("totalAtendidosPorEmpleado").innerHTML = listaAtendidos.length;
     limpiarNodo(document.getElementById("listaAtendidos"));
     for (var i = 0; i < listaAtendidos.length; i++) {
-        var doc = document.createElement("p");
-        doc.innerHTML = listaAtendidos[i][0];
+        var doc = crearFilaTablaPendientes(i+1,listaAtendidos[i][0]);
         doc.classList.add("is-size-7");
         document.getElementById("listaAtendidos").appendChild(doc);
     }
@@ -144,4 +138,15 @@ function atenderCliente(e) {
         console.log("Atendidos: " + clientesAtendidosPorEmpleado);
     } else (alert("boludo, queres eliminar de un array vacio"));
 
+}
+
+function crearFilaTablaPendientes(nroTurno,nombre) {
+    var celdaTurno = document.createElement("td");
+    celdaTurno.innerHTML = nroTurno;
+    var celdaNombre = document.createElement("td");
+    celdaNombre.innerHTML = nombre;
+    var fila = document.createElement("tr");
+    fila.appendChild(celdaTurno);
+    fila.appendChild(celdaNombre);
+    return fila;
 }

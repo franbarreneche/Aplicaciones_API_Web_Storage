@@ -63,6 +63,8 @@ function agregarCliente() {
     var clienteNuevo = [nombre, tipo, nTurno];
     clientesPendientes.push(clienteNuevo);
     localStorage.setItem("clientesPendientes", JSON.stringify(clientesPendientes));
+    document.getElementById("textNombre").value = "";
+    document.getElementById("textNombre").focus();
 }
 
 

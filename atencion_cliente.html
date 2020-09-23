@@ -56,8 +56,8 @@
                             </h2>
                         </div>
                     </div>
-                </section> 
-    </section>    
+                </section>
+    </section>
     <section class="container">
         <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
@@ -97,73 +97,81 @@
                 </article>
             </div>
         </div>
-    </section>    
+    </section>
     <section class="section">
         <div class="container">
             <div class="tile is-ancestor">
-                <div class="tile is-parent is-vertical" > 
-                    <div class="tile is-child box has-background-dark has-text-light" id="listaAtendidos">                        
+                <div class="tile is-parent is-vertical">
+                    <div class="table-container box has-background-dark">
+                        <table class="table is-fullwidth has-background-dark has-text-light" id="listaAtendidos">
+                        </table>
                     </div>
                 </div>
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child is-12"> 
+                    <div class="tile is-child is-12">
                         <button id="btnAtenderRE" class="button is-block is-primary is-small is-fullwidth">
                             Atender
-                        </button>                       
+                        </button>
                     </div>
-                    
-                        <div class="table-container box">
+                    <div class="table-container box">
                         <table class="table is-fullwidth" id="listaRE">
-
-                        </table> </div>                       
-                    
+                        </table>
+                    </div>
                 </div>
-                <div class="tile is-parent is-vertical" >
-                    <div class="tile is-child is-12"> 
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child is-12">
                         <button id="btnAtenderCE" class="button is-block is-success is-small is-fullwidth">
                             Atender
-                        </button>                       
+                        </button>
                     </div>
-                    <div class="tile is-child box" id="listaCE">
+                    <div class="table-container box">
+                        <table class="table is-fullwidth" id="listaCE">
+                        </table>
                     </div>
                 </div>
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child is-12"> 
+                    <div class="tile is-child is-12">
                         <button id="btnAtenderRR" class="button is-block is-info is-small is-fullwidth">
                             Atender
-                        </button>                       
+                        </button>
                     </div>
-                    <div class="tile is-child box" id="listaRR">
+                    <div class="table-container box">
+                        <table class="table is-fullwidth" id="listaRR">
+                        </table>
                     </div>
                 </div>
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child is-12"> 
+                    <div class="tile is-child is-12">
                         <button id="btnAtenderAC" class="button is-block is-dark is-small is-fullwidth">
                             Atender
-                        </button>                       
+                        </button>
                     </div>
-                    <div class="tile is-child box" id="listaAC">
+                    <div class="table-container box">
+                        <table class="table is-fullwidth" id="listaAC">
+                        </table>
                     </div>
                 </div>
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child is-12"> 
+                    <div class="tile is-child is-12">
                         <button id="btnAtenderQQ" class="button is-block is-danger is-small is-fullwidth">
                             Atender
-                        </button>                       
-                    </div>                    
-                    <div class="tile is-child box" id="listaQQ">
+                        </button>
+                    </div>
+                    <div class="table-container box">
+                        <table class="table is-fullwidth" id="listaQQ">
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MIS SCRIPTS -->    
+    <!-- MIS SCRIPTS -->
     <script src="js/sesion_usuario.js"></script>
     <script src="js/atencion_cliente.js"></script>
-    <script>                
+    <script>
         var usuario = getUsuarioSesion();
-        if(usuario == null || usuario == "") location.href = "login.html";
+        if (usuario == null || usuario == "") location.href = "login.html";
         document.getElementById("nombreUsuario").innerHTML = usuario;
     </script>
 </body>
